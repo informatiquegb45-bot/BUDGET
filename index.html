@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gestion de Budget</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="container">
+      <h1>Gestion de budget</h1>
+      <p class="subtitle">
+        Suivez vos ventes de services et produits, et calculez automatiquement
+        le chiffre d'affaires, le bénéfice et les créances à prélever.
+      </p>
+
+      <section class="card">
+        <h2>Ajouter une vente</h2>
+        <form id="sale-form">
+          <div class="grid">
+            <label>
+              Type
+              <select id="type" required>
+                <option value="service">Service</option>
+                <option value="produit">Produit</option>
+              </select>
+            </label>
+
+            <label>
+              Description
+              <input id="description" type="text" placeholder="Ex: Maintenance" required />
+            </label>
+
+            <label>
+              Montant vendu (€)
+              <input id="saleAmount" type="number" min="0" step="0.01" required />
+            </label>
+
+            <label>
+              Coût (€)
+              <input id="costAmount" type="number" min="0" step="0.01" required />
+            </label>
+
+            <label>
+              Montant déjà encaissé (€)
+              <input id="paidAmount" type="number" min="0" step="0.01" value="0" required />
+            </label>
+
+            <label>
+              Date de vente
+              <input id="saleDate" type="date" required />
+            </label>
+
+            <label>
+              Date de prélèvement associée
+              <input id="debitDate" type="date" required />
+            </label>
+          </div>
+
+          <button type="submit">Ajouter</button>
+        </form>
+      </section>
+
+      <section class="card metrics">
+        <h2>Indicateurs</h2>
+        <div class="metric-grid">
+          <article>
+            <h3>Chiffre d'affaires</h3>
+            <p id="totalRevenue">0,00 €</p>
+          </article>
+          <article>
+            <h3>Bénéfice</h3>
+            <p id="totalProfit">0,00 €</p>
+          </article>
+          <article>
+            <h3>Créances restantes</h3>
+            <p id="totalReceivable">0,00 €</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>Ventes enregistrées</h2>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Type</th>
+                <th>Description</th>
+                <th>Montant</th>
+                <th>Coût</th>
+                <th>Payé</th>
+                <th>Créance</th>
+                <th>Date vente</th>
+                <th>Date prélèvement</th>
+              </tr>
+            </thead>
+            <tbody id="salesBody"></tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>
